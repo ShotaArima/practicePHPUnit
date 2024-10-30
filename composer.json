@@ -3,7 +3,7 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Tmp\\Phpunit\\": "src/"
+            "App\\Phpunit\\": "src/"
         }
     },
     "authors": [
