@@ -14,13 +14,52 @@
 3. コード実行で利用
 
 ### 今回の動作環境
-- PHP : 
-- composer : 
-- PHPUnit : 
+- PHP : v8.3.9
+- composer : v2.7.7 
+- PHPUnit : ^10.5
 
 ## 準備
 - プロジェクト作成のコマンド
-	```bash
-		$ composer init
-	```
+```bash
+$ composer init
+```
+
+- 設定
+```bash
+Package name (<vendor>/<name>) [makoto/phpunit-getting-started]: app/phpunit
+Description []:
+Author [名前 <メールアドレス>, n to skip]:
+Minimum Stability []:
+Package Type (e.g. library, project, metapackage, composer-plugin) []: prpject
+License []:
+
+Define your dependencies.
+
+Would you like to define your dependencies (require) interactively [yes]? no
+Would you like to define your dev dependencies (require-dev) interactively [yes]? no
+Add PSR-4 autoload mapping? Maps namespace "App\Phpunit" to the entered relative path. [src/, n to skip]:
+```
+
+- `config.platform`の設定
+```bash
+$ composer config platform.php  8.1.13
+```
+これにより、`composer.json`に以下の内容が追加される
+```json
+    "config": {
+        "platform": {
+            "php": "8.1.13"
+        }
+    },
+```
+- PHPUnitのインストール
+```bash
+$ composer require --dev phpunit/phpunit
+```
+これにより、`composer.json`に下記の内容が追加される
+```json
+    "require-dev": {
+        "phpunit/phpunit": "^10.5"
+    }
+```
 
