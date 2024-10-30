@@ -63,3 +63,85 @@ $ composer require --dev phpunit/phpunit
     }
 ```
 
+## ディレクトリ構造
+```bash
+.
+├── src
+│   └── Calculator.php
+├── tests
+│   └── CalculatorTest.php
+└── vendor
+```
+- src
+  - 機能などを記述する
+- tests
+  - テストコードを記述する
+- vendor
+  - phpunitなどのものが色々入っている
+
+## テストの実行
+```bash
+$  vendor/phpunit/phpunit/phpunit tests
+PHPUnit 10.5.38 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.3.9
+
+..                                                                  2 / 2 (100%)
+
+Time: 00:00.002, Memory: 6.00 MB
+
+OK (2 tests, 2 assertions)
+
+```
+..は成功の意味なので、これでうまくいっていることがわかる
+
+### 間違いの場合
+```php
+    public function test_エラー()
+    {
+        $calculator = new Calculator();
+        $this->assertSame(10, $calculator->add(10, 2));
+        $this->assertSame(7, $calculator->sub(10, 2));
+    }
+```
+
+結果
+```bash
+$  vendor/phpunit/phpunit/phpunit tests
+PHPUnit 10.5.38 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.3.9
+
+..F                                                                 3 / 3 (100%)
+
+Time: 00:00.006, Memory: 8.00 MB
+
+There was 1 failure:
+
+1) App\Phpunit\CalculatorTest::test_エラー
+Failed asserting that 12 is identical to 10.
+
+/Users/shota.arima/tmp-phpunit/tests/CalculatorTest.php:23
+
+FAILURES!
+Tests: 3, Assertions: 3, Failures: 1.
+
+```
+
+## 注意
+- 最初テストがうまくいかなかった
+- クラスが読み込まれないエラーだった
+  - `composer.json`に以下の内容かどうかを確認し、更新するとうまくいった
+  - `composer.json`
+    ```json
+    "autoload": {
+        "psr-4": {
+            "App\\Phpunit\\": "src/"
+        }
+    }
+    ```
+  - `composer.json`の更新
+    ```bash
+    composer dump-autoload   
+    ```
+  - 理由を調べる必要がある
