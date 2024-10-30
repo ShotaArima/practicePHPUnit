@@ -17,4 +17,10 @@ class CalculatorTest extends TestCase
         $calculator = new Calculator();
         $this->assertSame(8, $calculator->sub(10, 2));
     }
+    public function test_エラー()
+    {
+        $calculator = new Calculator();
+        $this->assertSame(10, $calculator->add(10, 2));
+        $this->assertSame(7, $calculator->sub(10, 2));
+    }
 }
