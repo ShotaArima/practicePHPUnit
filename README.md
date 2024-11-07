@@ -1,4 +1,5 @@
-# practice-phpunit
+# practicePHPUnit
+
 このリポジトリは、PHPUnitについて理解するための練習である
 
 ## 参考文献
