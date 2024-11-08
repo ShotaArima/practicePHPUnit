@@ -146,3 +146,8 @@ Tests: 3, Assertions: 3, Failures: 1.
     composer dump-autoload   
     ```
   - 理由を調べる必要がある
+
+# Unitテストの極意
+- 1単位の振る舞いを確認すること
+- 実行時間が短いこと
+- 他のテストケースから隔離された状態で実行されること
